@@ -1,0 +1,175 @@
+#include <LiquidCrystal_I2C.h>
+LiquidCrystal_I2C lcd(0x27,16,2);
+void setup() {
+  // put your setup code here, to run once:
+  lcd.init(); //initialisasi layar
+  lcd.clear(); //menghapus tulisan dilayar
+  lcd.backlight(); //menyalakan backlight
+  lcd.setCursor(2,0);
+  lcd.print("HELLO WORLD!");
+  lcd.setCursor(2,1);
+  lcd.print("Prodi D3 TK");
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+}
+
+//////nEXTTTTTTTTTTTTTTTTTTTTTT///////
+
+#include <LiquidCrystal_I2C.h>
+LiquidCrystal_I2C lcd(0x27,16,2);
+int button1 = 7;
+int button2 = 8;
+int button3 = 9;
+void setup() {
+  // put your setup code here, to run once:
+  lcd.init(); //initialisasi layar
+
+  pinMode(button1, INPUT);
+  pinMode(button2, INPUT);
+  pinMode(button3, INPUT);
+
+}
+
+void loop() {
+    if(digitalRead(button1) == HIGH){
+      lcd.backlight();
+      lcd.setCursor(2,0);
+      lcd.print("Mirza faisa");
+    }else if(digitalRead(button2) == HIGH) {
+      lcd.backlight();
+      lcd.setCursor(2,1);
+      lcd.print("Dzikri");
+    }else {
+      lcd.clear();
+    }
+    delay(1000);
+
+  // put your main code here, to run repeatedly:
+
+}
+
+
+#include <LiquidCrystal_I2C.h>
+LiquidCrystal_I2C lcd(0x27,16,2);
+void setup()
+{
+lcd.init();
+lcd.clear();
+lcd.backlight();
+
+lcd.setCursor(0,0);
+lcd.print("Hello world!");
+}
+void loop() {
+for (int positionCounter = 0;positionCounter < 13;positionCounter++) {
+lcd.scrollDisplayLeft();
+delay(150);
+ }
+ for (int positionCounter = 0;positionCounter < 29;positionCounter++) {
+lcd.scrollDisplayRight();
+delay(150);
+ }
+ for (int positionCounter = 0; positionCounter < 16;positionCounter++) {
+lcd.scrollDisplayLeft();
+delay(150);
+ }
+ delay(1000);
+}
+
+#include <LiquidCrystal_I2C.h>
+LiquidCrystal_I2C lcd(0x27,16,2);
+int tombol1=7;
+int tombol2=8;
+int tombol3=9;
+void setup()
+{
+lcd.init();
+lcd.clear();
+lcd.backlight();
+pinMode(tombol1, INPUT);
+pinMode(tombol2, INPUT);
+pinMode(tombol3, INPUT);
+
+lcd.setCursor(0,0);
+lcd.print("Hello world!");
+}
+void loop() {
+
+if(digitalRead(tombol1)==LOW){
+for (int positionCounter = 0;positionCounter < 13;positionCounter++) {
+lcd.scrollDisplayLeft();
+delay(150);
+}
+}
+else if(digitalRead(tombol2)==LOW){
+ for (int positionCounter = 0;positionCounter < 29;positionCounter++) {
+lcd.scrollDisplayRight();
+delay(150);
+ }
+ }
+ else if(digitalRead(tombol3)==LOW){
+ for (int positionCounter = 0; positionCounter < 16;positionCounter++) {
+lcd.scrollDisplayLeft();
+delay(150);
+ }
+ delay(1000);
+}
+}
+
+#include <LiquidCrystal_I2C.h>
+LiquidCrystal_I2C lcd(0x27,16,2);
+void setup()
+{
+ Serial.begin(9600);
+lcd.init();
+lcd.backlight();
+}
+void loop()
+{
+ if (Serial.available()) {
+delay(100);
+lcd.clear();
+lcd.setCursor(1,1);
+while (Serial.available() > 0) {
+lcd.write(Serial.read());
+ }
+ }
+}
+
+
+#include <LiquidCrystal_I2C.h>
+LiquidCrystal_I2C lcd(0x27, 16, 2);  // set the LCD address to 0x3F for a 16
+//chars and 2 line display
+int tombol = A0;
+int tombol1 = A1;
+int tombol2 = A2;
+
+void setup() {
+  pinMode(tombol, INPUT_PULLUP);
+  pinMode(tombol1, INPUT_PULLUP);
+  pinMode(tombol2, INPUT_PULLUP);
+  lcd.init();
+  // lcd.clear();
+  lcd.backlight();  // Make sure backlight is on
+  // Print a message on both lines of the LCD.
+  lcd.setCursor(0, 0);  //Set cursor to character 2 on line 0
+  Serial.begin(9600);
+  lcd.print("Hello!");
+}
+void loop() {
+  if (Serial.available()) { 
+delay(100); 
+lcd.clear(); 
+ while (Serial.available() > 0) { 
+lcd.write(Serial.read()); 
+ } 
+ }
+  if(digitalRead(tombol)==LOW){
+    lcd.scrollDisplayRight();
+    delay(100);
+}
+} 
