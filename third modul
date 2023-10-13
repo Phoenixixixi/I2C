@@ -108,3 +108,77 @@ else if(digitalRead(button2)==LOW){
 }
 }
 
+int button1 = 5;
+int button2 = 6;
+int relay = 11; 
+int ldr = A0;
+int pd = A1;
+int led = 9;
+int buzzer = 13;
+int nilai;
+void setup() { 
+Serial.begin(9600);
+pinMode(relay, OUTPUT); 
+pinMode(button1, INPUT);
+pinMode(button2, INPUT);
+pinMode(ldr, INPUT);
+pinMode(pd, INPUT);
+pinMode(led, OUTPUT);
+pinMode(buzzer, OUTPUT);
+}
+void loop() { 
+  if(digitalRead(button1==LOW)){
+    Serial.print("sensor PD : ");
+    Serial.println(analogRead(pd));
+    analogWrite(led, analogRead(pd)/4);
+    if(analogRead(pd) >= 300){
+      digitalWrite(buzzer, HIGH);
+    }else {
+      digitalWrite(buzzer, LOW);
+    }
+    delay(1000);
+} else if (digitalRead(button2==LOW)){
+  Serial.print("sensor LDR : ");
+    Serial.println(analogRead(ldr));
+    analogWrite(led, analogRead(ldr)/4);
+  
+}
+}
+
+int button1 = 5;
+int button2 = 6;
+int relay = 11; 
+int ldr = A0;
+int pd = A1;
+int led = 9;
+int buzzer = 13;
+int nilai;
+void setup() { 
+Serial.begin(9600);
+pinMode(relay, OUTPUT); 
+pinMode(button1, INPUT);
+pinMode(button2, INPUT);
+pinMode(ldr, INPUT);
+pinMode(pd, INPUT);
+pinMode(led, OUTPUT);
+pinMode(buzzer, OUTPUT);
+}
+void loop() { 
+  if(digitalRead(button1==LOW)){
+    Serial.print("sensor LDR : ");
+    Serial.println(analogRead(ldr));
+    analogWrite(led, analogRead(ldr)/4);
+    if(analogRead(ldr) >= 300){
+      digitalWrite(buzzer, HIGH);
+    }else {
+      digitalWrite(buzzer, LOW);
+    }
+    delay(1000);
+} else if (digitalRead(button2==LOW)){
+  Serial.print("sensor LDR : ");
+    Serial.println(analogRead(ldr));
+    analogWrite(led, analogRead(ldr)/4);
+  
+}
+}
+
