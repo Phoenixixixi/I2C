@@ -168,7 +168,7 @@ void loop() {
     Serial.print("sensor LDR : ");
     Serial.println(analogRead(ldr));
     analogWrite(led, analogRead(ldr)/4);
-    if(analogRead(ldr) >= 300){
+    if(analogRead(ldr) >= 300){ //nilai ldr akan masuk pada if dan akan di cek jika ia lebih dari 300 maka buzzer aken menyala
       digitalWrite(buzzer, HIGH);
     }else {
       digitalWrite(buzzer, LOW);
